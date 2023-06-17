@@ -1,7 +1,9 @@
 package com.example.demo.student;
 import jakarta.persistence.*;
+import org.springframework.cglib.core.Local;
 
 import java.time.LocalDate;
+import java.time.Period;
 
 @Entity
 public class Student {
@@ -11,31 +13,27 @@ public class Student {
     )
     private Long id;
     private String name;
-    private Integer age;
     private String email;
     private LocalDate dob;
-
+    @Transient
+    private Integer age;
     public Student() {
     }
 
     public Student(Long id,
                    String name,
-                   Integer age,
                    String email,
                    LocalDate dob) {
         this.id = id;
         this.name = name;
-        this.age = age;
         this.email = email;
         this.dob = dob;
     }
 
     public Student(String name,
-                   Integer age,
                    String email,
                    LocalDate dob) {
         this.name = name;
-        this.age = age;
         this.email = email;
         this.dob = dob;
     }
@@ -57,7 +55,7 @@ public class Student {
     }
 
     public Integer getAge() {
-        return age;
+        return Period.between(this.dob, LocalDate.now()).getYears();
     }
 
     public void setAge(Integer age) {

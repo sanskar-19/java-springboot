@@ -14,13 +14,11 @@ public class StudentConfig {
     CommandLineRunner commandLineRunner(StudentRepository repository){
         Student sanskar = new Student(
                 "Sanskar",
-                22,
                 "sanskar@my3dmeta.com",
                 LocalDate.of(2002, Month.FEBRUARY,3));
 
         Student sarthak = new Student(
                 "Sarthak",
-                24,
                 "sarthak@my3dmeta.com",
                 LocalDate.of(1999, Month.MAY,13));
 
